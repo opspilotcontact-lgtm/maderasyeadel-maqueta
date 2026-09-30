@@ -160,11 +160,9 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .cab nav a:not(.btn){position:relative}.cab nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#C49A72;transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease)}
 .cab nav a:not(.btn):hover::after{transform:scaleX(1)}
 /* firma: el anillo dibujado crece y la madera aparece encima */
-.tronco{aspect-ratio:1;right:-20vw!important}.tronco svg{position:absolute;inset:0;animation:dibujo .5s var(--ease) 1.6s both}
-@keyframes dibujo{to{opacity:0}}
+.tronco{aspect-ratio:1;right:-20vw!important}.tronco svg{position:absolute;inset:0}
 .portada{overflow:clip}.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 38%,#302D2A00 62%);pointer-events:none}.portada .w{z-index:1}
-.tronco .madera{position:absolute;inset:0;width:100%;height:100%;animation:madera .9s var(--ease) 1.05s both;filter:drop-shadow(0 30px 40px #0007)}
-@keyframes madera{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+}
 /* el canto de un tablero, como separador */
 .canto{height:12px;background:#5B3A24 url(../img/madera/canto.webp) center/1600px 100% repeat-x;box-shadow:inset 0 1px 0 #ffffff26,inset 0 -1px 0 #0000004d}
 /* barra de confianza bajo la portada */
@@ -174,7 +172,7 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .confianza svg{color:#C49A72;flex:none}.confianza a{text-decoration:none;border-bottom:1px solid #C49A7266}
 /* testa de madera con el precio a tiza (marca de almacén) */
 .testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
-.testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
+.testa-w .testa{margin:0;width:100%;height:100%}
 .barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
 .sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
 /* galería de obra real: recortes iguales, pie como etiqueta */
@@ -197,7 +195,7 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .precio-foto figcaption{font-size:13px;color:#57524d;padding:8px 2px 0;background:var(--c)}
 .precio-testa{display:flex;justify-content:center}.precio-testa .testa-w{margin:0}
 @media (max-width:900px){.precio-grid{grid-template-columns:1fr}.precio-testa{--t:200px!important}}
-@media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
+
 .g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
 @media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
 
@@ -225,7 +223,7 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
   box-shadow:0 10px 24px -18px #0007;max-width:420px;transition:transform .5s var(--ease),opacity .5s var(--ease),border-color .2s,box-shadow .2s}
 .hoja:hover{border-color:#9A6A45;box-shadow:0 14px 30px -18px #0009}
 .izq .hoja{grid-column:1;justify-self:end;margin-right:-8px}.der .hoja{grid-column:3;justify-self:start;margin-left:-8px}
-.hoja img{width:56px;height:56px;flex:none;filter:drop-shadow(0 3px 5px #0004)}
+.hoja img{width:56px;height:56px;flex:none}
 .hoja b{display:block;font:21px/1.15 var(--serif)}.hoja small{display:block;color:#57524d;font-size:13px}
 .hoja em{display:block;font-style:normal;font-size:13px;color:#5B3A24;margin-top:3px}
 .arbol-js .nudo{transition:transform .7s var(--ease);transform-origin:center}
@@ -249,7 +247,9 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .sv-hero .w{position:relative;z-index:1;grid-template-columns:1fr!important;width:100%}
 .sv-hero .w>div{max-width:640px}
 .tronco-int{position:absolute;right:-20vw;top:-8vw;width:min(78vw,860px);aspect-ratio:1;pointer-events:none}
-.tronco-int img{width:100%;height:100%;filter:drop-shadow(0 30px 40px #0007)}
+.tronco-int svg{display:block;width:100%;height:100%}
+.tronco-int .r{transform-box:view-box;transform-origin:52px 49px;animation:crece .9s var(--ease) both;animation-delay:calc(var(--i) * 70ms)}
+.tronco-int .fenda{animation:abre .5s var(--ease) 1.05s both}
 .sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 40%,#302D2A00 66%);pointer-events:none}
 @media (max-width:760px){.sv-hero{align-items:flex-end;min-height:auto}.tronco-int{right:-38vw;top:-22vw;width:104vw}.sv-hero .w{padding-top:62vw}.sv-hero::after{background:linear-gradient(0deg,#302D2A 0%,#302D2A 42%,#302D2A00 72%)}}
 </style></head><body>
