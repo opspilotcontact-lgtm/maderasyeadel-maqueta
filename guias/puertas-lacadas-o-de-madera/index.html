@@ -152,6 +152,59 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .barrios-lista a:hover{border-color:var(--w)}.barrios-lista img{width:44px;height:44px;flex:none}.barrios-lista b{font:20px var(--serif);display:block}.barrios-lista small{color:#57524d}
 .guia-cuerpo{max-width:68ch}.guia-cuerpo h2{font-size:clamp(26px,3vw,34px);margin:44px 0 12px}.guia-cuerpo p{margin:0 0 14px}
 .respuesta{background:var(--n);border-left:4px solid var(--w);padding:18px 22px;font-size:19px;max-width:68ch;margin:0 0 20px}
+
+/* ——— v3 · del dibujo al material ——— */
+::selection{background:#C49A72;color:#302D2A}
+:focus-visible{outline:2px solid #C49A72;outline-offset:3px}
+.btn{transition:transform .18s var(--ease),box-shadow .18s var(--ease),background-color .18s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px -8px #0008}
+.filas b,.tiza b,.plazo,.banda small,.cm,.num{font-variant-numeric:tabular-nums}
+.cab{box-shadow:0 1px 0 #ffffff10,0 8px 24px -18px #000}
+.cab nav a:not(.btn){position:relative}.cab nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#C49A72;transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease)}
+.cab nav a:not(.btn):hover::after{transform:scaleX(1)}
+/* firma: el anillo dibujado crece y la madera aparece encima */
+.tronco{aspect-ratio:1;right:-20vw!important}.tronco svg{position:absolute;inset:0;animation:dibujo .5s var(--ease) 1.6s both}
+@keyframes dibujo{to{opacity:0}}
+.portada{overflow:clip}.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 38%,#302D2A00 62%);pointer-events:none}.portada .w{z-index:1}
+.tronco .madera{position:absolute;inset:0;width:100%;height:100%;animation:madera .9s var(--ease) 1.05s both;filter:drop-shadow(0 30px 40px #0007)}
+@keyframes madera{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+/* el canto de un tablero, como separador */
+.canto{height:12px;background:#5B3A24 url(../../img/madera/canto.webp) center/1600px 100% repeat-x;box-shadow:inset 0 1px 0 #ffffff26,inset 0 -1px 0 #0000004d}
+/* barra de confianza bajo la portada */
+.confianza{background:#262421;color:#E6E2DC}
+.confianza ul{list-style:none;margin:0;padding:18px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px 28px}
+.confianza li{display:flex;align-items:center;gap:12px;font-size:15px;line-height:1.35}
+.confianza svg{color:#C49A72;flex:none}.confianza a{text-decoration:none;border-bottom:1px solid #C49A7266}
+/* testa de madera con el precio a tiza (marca de almacén) */
+.testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
+.testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
+.marca-tiza{position:absolute;left:0;right:0;top:50%;text-align:center;font:600 max(17px,calc(var(--t) * .2))/1 Caveat,cursive;color:#F7F1E8;
+  transform:translateY(-50%) rotate(-9deg);text-shadow:0 0 1px #fff9,0 1px 1px #0006;letter-spacing:.01em;pointer-events:none;white-space:nowrap}
+.barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
+.sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
+/* galería de obra real: recortes iguales, pie como etiqueta */
+.galeria{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.galeria figure{margin:0;position:relative;overflow:hidden;border-radius:4px;background:#E6E2DC}
+.galeria img{aspect-ratio:4/5;object-fit:cover;transition:transform .5s var(--ease)}
+.galeria a:hover img{transform:scale(1.035)}
+.galeria figcaption{position:absolute;left:10px;bottom:10px;margin:0;background:#FAF8F5;padding:3px 9px;border-radius:2px;font-size:13px;box-shadow:0 2px 8px #0003}
+.galeria figcaption a{text-decoration:none}
+/* pie con columnas */
+.pie{padding:56px 0 34px}.pie .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;align-items:start}
+.pie .pie-t{font:15px var(--serif);letter-spacing:.2em;text-transform:uppercase;color:#C49A72;margin:0 0 10px}
+.pie ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:2}.pie a{text-decoration:none}.pie a:hover{text-decoration:underline}
+.pie .marca p{max-width:30ch;margin:14px 0 0;font-size:14px}
+.pie .legal{border-top:1px solid #ffffff1f;margin-top:34px;padding-top:16px;font-size:13px;color:#a8a09a;display:flex;gap:18px;flex-wrap:wrap}
+@media (max-width:900px){.confianza ul{grid-template-columns:1fr 1fr}.pie .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.confianza ul{grid-template-columns:1fr;gap:10px}.testa-w{margin-right:14px}}
+.precio-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.precio-foto{margin:0;border-radius:4px;overflow:hidden;box-shadow:0 20px 40px -24px #0007}.precio-foto img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.precio-foto figcaption{font-size:13px;color:#57524d;padding:8px 2px 0;background:var(--c)}
+.precio-testa{display:flex;justify-content:center}.precio-testa .testa-w{margin:0}
+@media (max-width:900px){.precio-grid{grid-template-columns:1fr}.precio-testa{--t:200px!important}}
+@media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
+.g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
+@media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · precios orientativos a validar</div>
 <header class="cab"><div class="w">
@@ -160,12 +213,19 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 </div></header><main>
 <section class="sv-hero"><div class="w" style="grid-template-columns:1fr">
   <div><p class="miga"><a href="../../">Inicio</a> · <a href="../../guias/">Guías</a> · actualizada el 2026-09-30</p><h1>Puertas lacadas en blanco o de madera: diferencias prácticas</h1></div></div></section>
+<div class="canto" aria-hidden="true"></div>
 <section class="pila"><div class="w"><p class="respuesta">La lacada blanca da más luz, pega con casi todo y es más barata; la de madera da calidez, disimula mejor los golpes del día a día y cuesta algo más. Como referencia orientativa, instalada: lacada de 280 a 450 € y de madera de 380 a 650 € la unidad, con IVA.</p><div class="guia-cuerpo"><h2>¿En qué se diferencian de verdad?</h2><p>Una puerta lacada lleva una capa de pintura que tapa el material que hay debajo: el acabado es liso y uniforme. Una puerta de madera deja ver la veta, sea maciza o chapada, y se protege con barniz o aceite.</p><p>Las dos abren, cierran y aíslan igual si están bien hechas y bien colocadas. La diferencia está en cómo envejecen, cómo se limpian y cómo cambian la sensación de la casa.</p><h2>¿Cuál necesita menos mantenimiento?</h2><p>La lacada se limpia con un paño húmedo y queda como nueva, pero los golpes se notan: un portazo contra el pomo de otra puerta o un juguete lanzado deja una marca blanca que salta a la vista. Se puede retocar, aunque igualar el tono exacto no siempre sale perfecto.</p><p>La madera disimula mucho mejor los roces porque la veta los camufla. Con el tiempo coge tono, y un repaso de barniz en las zonas de más uso la deja bien. Si tienes niños o perro, suele ser la más agradecida.</p><h2>¿Cuál da más luz a la casa?</h2><p>La lacada blanca, sin discusión. En pasillos interiores sin ventana, que en muchos pisos son largos y oscuros, cambiar las puertas oscuras por blancas se nota nada más encender la luz: el pasillo parece más ancho.</p><p>La madera, en cambio, da calidez. En salones con buena luz natural o en casas con suelo de madera, una puerta de roble o haya encaja mejor que un blanco que puede quedar frío.</p><h2>¿Cuánto cuesta cada una?</h2><p>Precios orientativos con IVA, puerta de interior instalada, en Córdoba en 2026: lacada blanca, 280 – 450 € la unidad; de madera (roble, haya), 380 – 650 €; con vidrio, 400 – 700 €.</p><p>En un piso normal la diferencia se multiplica por el número de puertas, así que conviene decidirlo con la cuenta delante. Seis puertas se cambian en un día de trabajo, sea cual sea el acabado.</p><h2>¿Qué hago con las puertas de sapelli de los 70?</h2><p>Muchas casas de esa época tienen puertas de sapelli, una madera tropical rojiza, con molduras y marcos gruesos. Suelen ser puertas sólidas; el problema casi nunca es la calidad, sino que oscurecen la casa y marcan mucho la época.</p><p>Tienes tres caminos. Uno: cambiarlas en block por lacadas o de madera clara, que es lo que más cambia la casa. Dos: lacarlas en blanco, que es posible pero requiere lijar, preparar bien la superficie y asumir que las molduras seguirán ahí. Tres: dejarlas y restaurar el barniz, si te gusta ese aire y están en buen estado.</p><p>Si dudas, mándanos fotos de una de frente y de cerca del marco y te decimos qué opción tiene sentido en tu caso.</p><h2>¿Cómo pido precio para cambiar mis puertas?</h2><p>Mide el ancho y el alto de cada hueco, el grueso del tabique, fíjate hacia qué lado abre cada puerta y haz un par de fotos. Con eso te damos precio antes de visitar.</p><p>Si son puertas de montaje, pasamos directos a instalar. Si algo hay que hacerlo a medida, hacemos una visita de medición con un coste que te decimos antes y que te descontamos si nos encargas el trabajo.</p><p class="nota">Servicio relacionado: <a href="../../puertas-de-interior/">Puertas de interior</a>.</p></div></div></section>
 <section class="sv-faq"><div class="w"><span class="k">Preguntas</span><h2>Lo que nos preguntan.</h2><div style="margin-top:26px"><details><summary>¿Se amarillean las puertas lacadas en blanco?</summary><p>Depende de la laca y de cuánto sol directo reciban. Una laca de calidad aguanta bien en interiores; conviene preguntar por el acabado antes de elegir.</p></details><details><summary>¿Puedo mezclar puertas lacadas y de madera en la misma casa?</summary><p>Se puede, pero lo normal es mantener el mismo acabado en todas las puertas que dan a un mismo pasillo para que la casa se lea como un conjunto.</p></details><details><summary>¿Merece la pena lacar mis puertas de sapelli en lugar de cambiarlas?</summary><p>Si las puertas están sanas y te basta con cambiar el color, puede merecer la pena. Si además quieres quitar molduras o cambiar marcos, sale más a cuenta cambiarlas en block.</p></details></div></div></section>
 <section class="sv-cta"><img class="sil" src="../../img/yeadel-simbolo-mono-cal.svg" alt="" width="520" height="520" loading="lazy"><div class="w">
   <span class="k">Pide tu precio</span><h2>Mándanos las fotos y te decimos cuánto cuesta.</h2>
   <a class="btn" href="../../?b=guia#pide">Pide tu precio</a></div></section>
 </main>
-<footer class="pie"><div class="w"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
-<p>Carpintería en Córdoba y cercanías · <a href="../../carpintero-cordoba/">barrios</a> · <a href="../../guias/">guías</a></p></div></footer>
+<div class="canto" aria-hidden="true"></div><footer class="pie"><div class="w"><div class="cols">
+  <div class="marca"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
+    <p>Carpintería en Córdoba con el precio antes de que vaya nadie.</p></div>
+  <div><p class="pie-t">Servicios</h4><ul><li><a href="../../puertas-de-interior/">Puertas de interior</a></li><li><a href="../../armarios-empotrados/">Armarios empotrados</a></li><li><a href="../../montaje-de-cocinas/">Montaje de cocinas</a></li><li><a href="../../puertas-correderas/">Puertas correderas</a></li><li><a href="../../tarima-flotante/">Tarima flotante y rodapié</a></li><li><a href="../../puertas-de-entrada/">Puertas de entrada</a></li><li><a href="../../ventanas-y-carpinteria-metalica/">Ventanas y carpintería metálica</a></li><li><a href="../../muebles-a-medida/">Muebles a medida</a></li><li><a href="../../arreglos-de-carpinteria/">Arreglos y ajustes</a></li></ul></div>
+  <div><p class="pie-t">Barrios</h4><ul><li><a href="../../carpintero-cordoba/ciudad-jardin/">Ciudad Jardín</a></li><li><a href="../../carpintero-cordoba/fatima/">Fátima y Campiñuela</a></li><li><a href="../../carpintero-cordoba/santa-rosa-valdeolleros/">Santa Rosa y Valdeolleros</a></li><li><a href="../../carpintero-cordoba/sector-sur/">Sector Sur y Campo de la Verdad</a></li><li><a href="../../carpintero-cordoba/levante/">Levante, Lepanto y Viñuela</a></li><li><a href="../../carpintero-cordoba/poniente-vistalegre/">Poniente, Vistalegre y Zoco</a></li><li><a href="../../carpintero-cordoba/arroyo-del-moro-norena/">Arroyo del Moro, Noreña y Tablero</a></li><li><a href="../../carpintero-cordoba/">Todos y cercanías</a></li></ul></div>
+  <div><p class="pie-t">Contacto</h4><ul><li><a href="https://wa.me/34682163820">WhatsApp 682 16 38 20</a></li><li><a href="mailto:info@cordobasoluciona.es">info@cordobasoluciona.es</a></li>
+    <li><a href="../../guias/">Guías de carpintería</a></li></ul></div>
+</div><p class="legal"><span>© 2026 Maderas Yeadel · Córdoba</span><a href="../../aviso-legal/">Aviso legal</a><a href="../../privacidad/">Privacidad</a></p></div></footer>
 </body></html>

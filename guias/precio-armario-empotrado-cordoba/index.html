@@ -152,6 +152,59 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .barrios-lista a:hover{border-color:var(--w)}.barrios-lista img{width:44px;height:44px;flex:none}.barrios-lista b{font:20px var(--serif);display:block}.barrios-lista small{color:#57524d}
 .guia-cuerpo{max-width:68ch}.guia-cuerpo h2{font-size:clamp(26px,3vw,34px);margin:44px 0 12px}.guia-cuerpo p{margin:0 0 14px}
 .respuesta{background:var(--n);border-left:4px solid var(--w);padding:18px 22px;font-size:19px;max-width:68ch;margin:0 0 20px}
+
+/* ——— v3 · del dibujo al material ——— */
+::selection{background:#C49A72;color:#302D2A}
+:focus-visible{outline:2px solid #C49A72;outline-offset:3px}
+.btn{transition:transform .18s var(--ease),box-shadow .18s var(--ease),background-color .18s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px -8px #0008}
+.filas b,.tiza b,.plazo,.banda small,.cm,.num{font-variant-numeric:tabular-nums}
+.cab{box-shadow:0 1px 0 #ffffff10,0 8px 24px -18px #000}
+.cab nav a:not(.btn){position:relative}.cab nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#C49A72;transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease)}
+.cab nav a:not(.btn):hover::after{transform:scaleX(1)}
+/* firma: el anillo dibujado crece y la madera aparece encima */
+.tronco{aspect-ratio:1;right:-20vw!important}.tronco svg{position:absolute;inset:0;animation:dibujo .5s var(--ease) 1.6s both}
+@keyframes dibujo{to{opacity:0}}
+.portada{overflow:clip}.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 38%,#302D2A00 62%);pointer-events:none}.portada .w{z-index:1}
+.tronco .madera{position:absolute;inset:0;width:100%;height:100%;animation:madera .9s var(--ease) 1.05s both;filter:drop-shadow(0 30px 40px #0007)}
+@keyframes madera{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+/* el canto de un tablero, como separador */
+.canto{height:12px;background:#5B3A24 url(../../img/madera/canto.webp) center/1600px 100% repeat-x;box-shadow:inset 0 1px 0 #ffffff26,inset 0 -1px 0 #0000004d}
+/* barra de confianza bajo la portada */
+.confianza{background:#262421;color:#E6E2DC}
+.confianza ul{list-style:none;margin:0;padding:18px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px 28px}
+.confianza li{display:flex;align-items:center;gap:12px;font-size:15px;line-height:1.35}
+.confianza svg{color:#C49A72;flex:none}.confianza a{text-decoration:none;border-bottom:1px solid #C49A7266}
+/* testa de madera con el precio a tiza (marca de almacén) */
+.testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
+.testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
+.marca-tiza{position:absolute;left:0;right:0;top:50%;text-align:center;font:600 max(17px,calc(var(--t) * .2))/1 Caveat,cursive;color:#F7F1E8;
+  transform:translateY(-50%) rotate(-9deg);text-shadow:0 0 1px #fff9,0 1px 1px #0006;letter-spacing:.01em;pointer-events:none;white-space:nowrap}
+.barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
+.sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
+/* galería de obra real: recortes iguales, pie como etiqueta */
+.galeria{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.galeria figure{margin:0;position:relative;overflow:hidden;border-radius:4px;background:#E6E2DC}
+.galeria img{aspect-ratio:4/5;object-fit:cover;transition:transform .5s var(--ease)}
+.galeria a:hover img{transform:scale(1.035)}
+.galeria figcaption{position:absolute;left:10px;bottom:10px;margin:0;background:#FAF8F5;padding:3px 9px;border-radius:2px;font-size:13px;box-shadow:0 2px 8px #0003}
+.galeria figcaption a{text-decoration:none}
+/* pie con columnas */
+.pie{padding:56px 0 34px}.pie .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;align-items:start}
+.pie .pie-t{font:15px var(--serif);letter-spacing:.2em;text-transform:uppercase;color:#C49A72;margin:0 0 10px}
+.pie ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:2}.pie a{text-decoration:none}.pie a:hover{text-decoration:underline}
+.pie .marca p{max-width:30ch;margin:14px 0 0;font-size:14px}
+.pie .legal{border-top:1px solid #ffffff1f;margin-top:34px;padding-top:16px;font-size:13px;color:#a8a09a;display:flex;gap:18px;flex-wrap:wrap}
+@media (max-width:900px){.confianza ul{grid-template-columns:1fr 1fr}.pie .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.confianza ul{grid-template-columns:1fr;gap:10px}.testa-w{margin-right:14px}}
+.precio-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.precio-foto{margin:0;border-radius:4px;overflow:hidden;box-shadow:0 20px 40px -24px #0007}.precio-foto img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.precio-foto figcaption{font-size:13px;color:#57524d;padding:8px 2px 0;background:var(--c)}
+.precio-testa{display:flex;justify-content:center}.precio-testa .testa-w{margin:0}
+@media (max-width:900px){.precio-grid{grid-template-columns:1fr}.precio-testa{--t:200px!important}}
+@media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
+.g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
+@media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · precios orientativos a validar</div>
 <header class="cab"><div class="w">
@@ -160,12 +213,19 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 </div></header><main>
 <section class="sv-hero"><div class="w" style="grid-template-columns:1fr">
   <div><p class="miga"><a href="../../">Inicio</a> · <a href="../../guias/">Guías</a> · actualizada el 2026-09-30</p><h1>¿Cuánto cuesta un armario empotrado en Córdoba?</h1></div></div></section>
+<div class="canto" aria-hidden="true"></div>
 <section class="pila"><div class="w"><p class="respuesta">Como precio orientativo, un armario empotrado abatible completo sale entre 450 y 650 € por metro lineal, uno corredero entre 550 y 750 €/ml, y si solo cambias el frente, entre 250 y 400 €/ml, con IVA. Lo que más mueve la cifra es el tipo de puerta, si hace falta interior nuevo y cómo esté el hueco.</p><div class="guia-cuerpo"><h2>¿Qué precio tiene un armario empotrado por metro lineal?</h2><p>En carpintería el armario empotrado se cobra por metro lineal: el ancho del hueco, de pared a pared. La altura y el fondo influyen, pero la referencia con la que vas a comparar presupuestos es el metro lineal.</p><p>Nuestros precios orientativos, con IVA, para Córdoba en 2026: armario abatible con puertas e interior, 450 – 650 €/ml; armario corredero, 550 – 750 €/ml; solo el frente (puertas y marco, aprovechando el interior que ya tienes), 250 – 400 €/ml. Son orientativos: el precio cerrado te lo damos cuando vemos tus fotos y tus medidas.</p><h2>¿Abatible o corredero: cuál me conviene?</h2><p>El abatible abre del todo: ves el armario entero de un vistazo y el herraje es sencillo. A cambio necesita espacio delante para que la puerta gire. En un dormitorio con la cama cerca del armario, eso molesta.</p><p>El corredero no ocupa sitio al abrir, así que encaja en pasillos y habitaciones justas. La contrapartida es que nunca ves todo el interior a la vez, porque una hoja siempre tapa a otra, y el sistema de guías pide un hueco razonablemente recto. Por eso suele costar algo más.</p><p>Regla práctica: si delante del armario puedes abrir una puerta sin chocar con nada, el abatible es más cómodo y más barato. Si no, corredero.</p><h2>¿Me basta con cambiar solo el frente?</h2><p>Muchas casas tienen armarios con un interior de obra o de tablero que sigue sano, pero con puertas viejas, desconchadas o que ya no cierran. Ahí cambiar solo el frente es la opción lógica: renuevas lo que se ve y pagas bastante menos que por un armario completo.</p><p>No compensa si el interior está hinchado por humedad, si las baldas ceden o si quieres redistribuirlo entero (cajoneras, doble barra, zapatero). En ese caso sale mejor hacerlo completo de una vez.</p><h2>¿Qué hace que suba el precio?</h2><p>Las cosas que más encarecen un armario empotrado son siempre las mismas: puertas correderas en lugar de abatibles, acabados de madera o lacados especiales frente a los estándar, interiores con muchos cajones y accesorios, y huecos torcidos o fuera de escuadra que obligan a ajustar cada pieza.</p><p>También cuenta la altura: un armario hasta el techo, con altillo, lleva más material y más puertas que uno que se queda a media altura.</p><h2>¿Cómo mido el hueco para pedir precio?</h2><p>Con un metro y el móvil te basta. Mide el ancho abajo, en medio y arriba; el alto a la izquierda, en el centro y a la derecha; y el fondo, de la pared del fondo al borde del hueco. Apunta siempre la medida más pequeña de cada tanda, que es la que manda.</p><p>Haz una foto de frente al hueco entero y otra de cerca de cada esquina. Si hay enchufes, interruptores, rodapié o un radiador cerca, que salgan en la foto.</p><h2>¿Cómo funciona el presupuesto con Maderas Yeadel?</h2><p>Nos mandas fotos y medidas y te damos precio antes de que nadie pise tu casa. Un armario empotrado es un trabajo a medida, así que antes de fabricar hacemos una visita de medición: su coste te lo decimos antes y, si nos encargas el armario, te lo descontamos.</p><p>Tras la medición, la fabricación lleva de 2 a 4 semanas y el montaje en casa, de 1 a 2 días.</p><p class="nota">Servicio relacionado: <a href="../../armarios-empotrados/">Armarios empotrados</a>.</p></div></div></section>
 <section class="sv-faq"><div class="w"><span class="k">Preguntas</span><h2>Lo que nos preguntan.</h2><div style="margin-top:26px"><details><summary>¿Los precios del armario empotrado incluyen IVA?</summary><p>Sí. Los rangos por metro lineal que ves en esta guía son orientativos, con IVA incluido, para Córdoba en 2026.</p></details><details><summary>¿Cuánto tardáis en tener el armario montado?</summary><p>Después de la visita de medición, la fabricación lleva de 2 a 4 semanas y la instalación, de 1 a 2 días.</p></details><details><summary>¿La visita de medición se paga?</summary><p>Sí, porque el armario se hace a medida. Te decimos lo que cuesta antes de ir y, si nos encargas el trabajo, te lo descontamos del total.</p></details></div></div></section>
 <section class="sv-cta"><img class="sil" src="../../img/yeadel-simbolo-mono-cal.svg" alt="" width="520" height="520" loading="lazy"><div class="w">
   <span class="k">Pide tu precio</span><h2>Mándanos las fotos y te decimos cuánto cuesta.</h2>
   <a class="btn" href="../../?b=guia#pide">Pide tu precio</a></div></section>
 </main>
-<footer class="pie"><div class="w"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
-<p>Carpintería en Córdoba y cercanías · <a href="../../carpintero-cordoba/">barrios</a> · <a href="../../guias/">guías</a></p></div></footer>
+<div class="canto" aria-hidden="true"></div><footer class="pie"><div class="w"><div class="cols">
+  <div class="marca"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
+    <p>Carpintería en Córdoba con el precio antes de que vaya nadie.</p></div>
+  <div><p class="pie-t">Servicios</h4><ul><li><a href="../../puertas-de-interior/">Puertas de interior</a></li><li><a href="../../armarios-empotrados/">Armarios empotrados</a></li><li><a href="../../montaje-de-cocinas/">Montaje de cocinas</a></li><li><a href="../../puertas-correderas/">Puertas correderas</a></li><li><a href="../../tarima-flotante/">Tarima flotante y rodapié</a></li><li><a href="../../puertas-de-entrada/">Puertas de entrada</a></li><li><a href="../../ventanas-y-carpinteria-metalica/">Ventanas y carpintería metálica</a></li><li><a href="../../muebles-a-medida/">Muebles a medida</a></li><li><a href="../../arreglos-de-carpinteria/">Arreglos y ajustes</a></li></ul></div>
+  <div><p class="pie-t">Barrios</h4><ul><li><a href="../../carpintero-cordoba/ciudad-jardin/">Ciudad Jardín</a></li><li><a href="../../carpintero-cordoba/fatima/">Fátima y Campiñuela</a></li><li><a href="../../carpintero-cordoba/santa-rosa-valdeolleros/">Santa Rosa y Valdeolleros</a></li><li><a href="../../carpintero-cordoba/sector-sur/">Sector Sur y Campo de la Verdad</a></li><li><a href="../../carpintero-cordoba/levante/">Levante, Lepanto y Viñuela</a></li><li><a href="../../carpintero-cordoba/poniente-vistalegre/">Poniente, Vistalegre y Zoco</a></li><li><a href="../../carpintero-cordoba/arroyo-del-moro-norena/">Arroyo del Moro, Noreña y Tablero</a></li><li><a href="../../carpintero-cordoba/">Todos y cercanías</a></li></ul></div>
+  <div><p class="pie-t">Contacto</h4><ul><li><a href="https://wa.me/34682163820">WhatsApp 682 16 38 20</a></li><li><a href="mailto:info@cordobasoluciona.es">info@cordobasoluciona.es</a></li>
+    <li><a href="../../guias/">Guías de carpintería</a></li></ul></div>
+</div><p class="legal"><span>© 2026 Maderas Yeadel · Córdoba</span><a href="../../aviso-legal/">Aviso legal</a><a href="../../privacidad/">Privacidad</a></p></div></footer>
 </body></html>

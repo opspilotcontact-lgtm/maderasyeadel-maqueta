@@ -152,6 +152,59 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .barrios-lista a:hover{border-color:var(--w)}.barrios-lista img{width:44px;height:44px;flex:none}.barrios-lista b{font:20px var(--serif);display:block}.barrios-lista small{color:#57524d}
 .guia-cuerpo{max-width:68ch}.guia-cuerpo h2{font-size:clamp(26px,3vw,34px);margin:44px 0 12px}.guia-cuerpo p{margin:0 0 14px}
 .respuesta{background:var(--n);border-left:4px solid var(--w);padding:18px 22px;font-size:19px;max-width:68ch;margin:0 0 20px}
+
+/* ——— v3 · del dibujo al material ——— */
+::selection{background:#C49A72;color:#302D2A}
+:focus-visible{outline:2px solid #C49A72;outline-offset:3px}
+.btn{transition:transform .18s var(--ease),box-shadow .18s var(--ease),background-color .18s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px -8px #0008}
+.filas b,.tiza b,.plazo,.banda small,.cm,.num{font-variant-numeric:tabular-nums}
+.cab{box-shadow:0 1px 0 #ffffff10,0 8px 24px -18px #000}
+.cab nav a:not(.btn){position:relative}.cab nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:#C49A72;transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease)}
+.cab nav a:not(.btn):hover::after{transform:scaleX(1)}
+/* firma: el anillo dibujado crece y la madera aparece encima */
+.tronco{aspect-ratio:1;right:-20vw!important}.tronco svg{position:absolute;inset:0;animation:dibujo .5s var(--ease) 1.6s both}
+@keyframes dibujo{to{opacity:0}}
+.portada{overflow:clip}.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 38%,#302D2A00 62%);pointer-events:none}.portada .w{z-index:1}
+.tronco .madera{position:absolute;inset:0;width:100%;height:100%;animation:madera .9s var(--ease) 1.05s both;filter:drop-shadow(0 30px 40px #0007)}
+@keyframes madera{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+/* el canto de un tablero, como separador */
+.canto{height:12px;background:#5B3A24 url(../../img/madera/canto.webp) center/1600px 100% repeat-x;box-shadow:inset 0 1px 0 #ffffff26,inset 0 -1px 0 #0000004d}
+/* barra de confianza bajo la portada */
+.confianza{background:#262421;color:#E6E2DC}
+.confianza ul{list-style:none;margin:0;padding:18px 0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px 28px}
+.confianza li{display:flex;align-items:center;gap:12px;font-size:15px;line-height:1.35}
+.confianza svg{color:#C49A72;flex:none}.confianza a{text-decoration:none;border-bottom:1px solid #C49A7266}
+/* testa de madera con el precio a tiza (marca de almacén) */
+.testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
+.testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
+.marca-tiza{position:absolute;left:0;right:0;top:50%;text-align:center;font:600 max(17px,calc(var(--t) * .2))/1 Caveat,cursive;color:#F7F1E8;
+  transform:translateY(-50%) rotate(-9deg);text-shadow:0 0 1px #fff9,0 1px 1px #0006;letter-spacing:.01em;pointer-events:none;white-space:nowrap}
+.barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
+.sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
+/* galería de obra real: recortes iguales, pie como etiqueta */
+.galeria{columns:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.galeria figure{margin:0;position:relative;overflow:hidden;border-radius:4px;background:#E6E2DC}
+.galeria img{aspect-ratio:4/5;object-fit:cover;transition:transform .5s var(--ease)}
+.galeria a:hover img{transform:scale(1.035)}
+.galeria figcaption{position:absolute;left:10px;bottom:10px;margin:0;background:#FAF8F5;padding:3px 9px;border-radius:2px;font-size:13px;box-shadow:0 2px 8px #0003}
+.galeria figcaption a{text-decoration:none}
+/* pie con columnas */
+.pie{padding:56px 0 34px}.pie .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:28px;align-items:start}
+.pie .pie-t{font:15px var(--serif);letter-spacing:.2em;text-transform:uppercase;color:#C49A72;margin:0 0 10px}
+.pie ul{list-style:none;margin:0;padding:0;font-size:14px;line-height:2}.pie a{text-decoration:none}.pie a:hover{text-decoration:underline}
+.pie .marca p{max-width:30ch;margin:14px 0 0;font-size:14px}
+.pie .legal{border-top:1px solid #ffffff1f;margin-top:34px;padding-top:16px;font-size:13px;color:#a8a09a;display:flex;gap:18px;flex-wrap:wrap}
+@media (max-width:900px){.confianza ul{grid-template-columns:1fr 1fr}.pie .cols{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.confianza ul{grid-template-columns:1fr;gap:10px}.testa-w{margin-right:14px}}
+.precio-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.precio-foto{margin:0;border-radius:4px;overflow:hidden;box-shadow:0 20px 40px -24px #0007}.precio-foto img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.precio-foto figcaption{font-size:13px;color:#57524d;padding:8px 2px 0;background:var(--c)}
+.precio-testa{display:flex;justify-content:center}.precio-testa .testa-w{margin:0}
+@media (max-width:900px){.precio-grid{grid-template-columns:1fr}.precio-testa{--t:200px!important}}
+@media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
+.g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
+@media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · precios orientativos a validar</div>
 <header class="cab"><div class="w">
@@ -160,12 +213,19 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 </div></header><main>
 <section class="sv-hero"><div class="w" style="grid-template-columns:1fr">
   <div><p class="miga"><a href="../../">Inicio</a> · <a href="../../guias/">Guías</a> · actualizada el 2026-09-30</p><h1>¿Se puede poner tarima flotante sobre terrazo?</h1></div></div></section>
+<div class="canto" aria-hidden="true"></div>
 <section class="pila"><div class="w"><p class="respuesta">Sí: el terrazo es una buena base para la tarima flotante y no hace falta levantarlo, siempre que esté firme y bastante plano. Si hay desniveles de más de 3 mm en 2 m, antes se nivela con autonivelante.</p><div class="guia-cuerpo"><h2>¿Tengo que levantar el terrazo?</h2><p>No. La tarima flotante no se pega al suelo: se apoya sobre una lámina y las lamas se encajan entre sí. Por eso se puede poner encima del terrazo que ya tienes, sin obra, sin escombro y sin polvo de picar.</p><p>Lo que sí tiene que cumplir el terrazo es estar firme. Si hay baldosas sueltas o que suenan a hueco al pisarlas, hay que fijarlas antes, porque con el tiempo se mueven y la tarima lo acaba notando.</p><h2>¿Qué pasa si el suelo no está plano?</h2><p>La tarima flotante perdona poco los desniveles: si el suelo hace barriga o tiene escalones entre baldosas, las lamas flexan al pisar, suenan y las uniones sufren.</p><p>La comprobación es sencilla: una regla recta larga apoyada en el suelo, en varias direcciones. Si bajo la regla hay más de 3 mm de hueco en 2 m, hay que nivelar antes con autonivelante, que sale orientativamente entre 8 y 15 €/m². Si no llega a eso, la lámina de base absorbe las pequeñas irregularidades.</p><h2>¿Para qué sirve la lámina que va debajo?</h2><p>La lámina hace tres cosas: reparte el apoyo de la tarima, amortigua el ruido de pisadas y, cuando lleva barrera de vapor, frena la humedad que pueda subir del suelo. Sobre terrazo en planta baja, la barrera de vapor no es opcional.</p><p>No hace falta que elijas tú el modelo, pero sí que sepas que va siempre y que forma parte del precio de instalar la tarima.</p><h2>¿Hay que recortar las puertas?</h2><p>Casi siempre, sí. La tarima y la lámina suben el nivel del suelo, y las puertas que antes pasaban justas empiezan a rozar. La solución es recortar la hoja por abajo, en el sitio, con la herramienta adecuada para que el corte quede limpio.</p><p>Si estás pensando en cambiar también las puertas, es buen momento: se coloca primero el suelo y luego las puertas nuevas, ya con el alto correcto.</p><h2>¿Qué hago con el rodapié?</h2><p>La tarima necesita una pequeña junta perimetral contra las paredes para poder dilatar, y esa junta la tapa el rodapié. Si el rodapié viejo es de terrazo y está pegado a la pared, se puede dejar y poner un rodapié nuevo delante, o quitarlo si está suelto.</p><p>El rodapié colocado sale orientativamente entre 6 y 12 € por metro, con IVA.</p><h2>¿Puedo ponerla en la cocina y el baño?</h2><p>En la cocina, sí, con un laminado resistente al agua: aguanta salpicaduras y fregados normales si secas lo que cae. En el baño depende del producto concreto y de lo que diga el fabricante sobre zonas húmedas; mándanos fotos y te decimos si tu baño es buen candidato.</p><p>Precios orientativos con IVA, instalado: laminado AC4, 28 – 45 €/m²; resistente al agua, 38 – 60 €/m². Un piso de 80 m² se hace en 1 o 2 días. Nos mandas fotos y medidas y te damos precio antes de ir.</p><p class="nota">Servicio relacionado: <a href="../../tarima-flotante/">Tarima flotante y rodapié</a>.</p></div></div></section>
 <section class="sv-faq"><div class="w"><span class="k">Preguntas</span><h2>Lo que nos preguntan.</h2><div style="margin-top:26px"><details><summary>¿La tarima flotante sobre terrazo suena hueca?</summary><p>Suena mucho menos con una buena lámina debajo y un suelo bien plano. Si el terrazo tiene desniveles grandes, se nivela antes y el problema desaparece.</p></details><details><summary>¿Cuánto cuesta nivelar el suelo antes?</summary><p>Si hace falta, el autonivelante sale orientativamente entre 8 y 15 €/m². Solo se usa cuando hay más de 3 mm de desnivel en 2 m.</p></details><details><summary>¿Cuánto se tarda en poner tarima en un piso?</summary><p>Un piso de 80 m² se hace en 1 o 2 días, sin contar el nivelado si hiciera falta.</p></details></div></div></section>
 <section class="sv-cta"><img class="sil" src="../../img/yeadel-simbolo-mono-cal.svg" alt="" width="520" height="520" loading="lazy"><div class="w">
   <span class="k">Pide tu precio</span><h2>Mándanos las fotos y te decimos cuánto cuesta.</h2>
   <a class="btn" href="../../?b=guia#pide">Pide tu precio</a></div></section>
 </main>
-<footer class="pie"><div class="w"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
-<p>Carpintería en Córdoba y cercanías · <a href="../../carpintero-cordoba/">barrios</a> · <a href="../../guias/">guías</a></p></div></footer>
+<div class="canto" aria-hidden="true"></div><footer class="pie"><div class="w"><div class="cols">
+  <div class="marca"><img src="../../img/yeadel-mono-cal.svg" alt="Maderas Yeadel" width="140" height="44" loading="lazy">
+    <p>Carpintería en Córdoba con el precio antes de que vaya nadie.</p></div>
+  <div><p class="pie-t">Servicios</h4><ul><li><a href="../../puertas-de-interior/">Puertas de interior</a></li><li><a href="../../armarios-empotrados/">Armarios empotrados</a></li><li><a href="../../montaje-de-cocinas/">Montaje de cocinas</a></li><li><a href="../../puertas-correderas/">Puertas correderas</a></li><li><a href="../../tarima-flotante/">Tarima flotante y rodapié</a></li><li><a href="../../puertas-de-entrada/">Puertas de entrada</a></li><li><a href="../../ventanas-y-carpinteria-metalica/">Ventanas y carpintería metálica</a></li><li><a href="../../muebles-a-medida/">Muebles a medida</a></li><li><a href="../../arreglos-de-carpinteria/">Arreglos y ajustes</a></li></ul></div>
+  <div><p class="pie-t">Barrios</h4><ul><li><a href="../../carpintero-cordoba/ciudad-jardin/">Ciudad Jardín</a></li><li><a href="../../carpintero-cordoba/fatima/">Fátima y Campiñuela</a></li><li><a href="../../carpintero-cordoba/santa-rosa-valdeolleros/">Santa Rosa y Valdeolleros</a></li><li><a href="../../carpintero-cordoba/sector-sur/">Sector Sur y Campo de la Verdad</a></li><li><a href="../../carpintero-cordoba/levante/">Levante, Lepanto y Viñuela</a></li><li><a href="../../carpintero-cordoba/poniente-vistalegre/">Poniente, Vistalegre y Zoco</a></li><li><a href="../../carpintero-cordoba/arroyo-del-moro-norena/">Arroyo del Moro, Noreña y Tablero</a></li><li><a href="../../carpintero-cordoba/">Todos y cercanías</a></li></ul></div>
+  <div><p class="pie-t">Contacto</h4><ul><li><a href="https://wa.me/34682163820">WhatsApp 682 16 38 20</a></li><li><a href="mailto:info@cordobasoluciona.es">info@cordobasoluciona.es</a></li>
+    <li><a href="../../guias/">Guías de carpintería</a></li></ul></div>
+</div><p class="legal"><span>© 2026 Maderas Yeadel · Córdoba</span><a href="../../aviso-legal/">Aviso legal</a><a href="../../privacidad/">Privacidad</a></p></div></footer>
 </body></html>
