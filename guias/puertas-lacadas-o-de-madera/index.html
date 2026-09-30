@@ -205,11 +205,17 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 @media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
 
 /* ——— v4 · el árbol ——— */
-.arbol-sec{position:relative;background:linear-gradient(#E6E2DC 0,#E6E2DC calc(100% - 300px),var(--sig) 100%);padding:96px 0 0;overflow:clip}
+.arbol-sec{position:relative;background:#E6E2DC;padding:96px 0 0;overflow:clip}
+.suelo{position:relative;background:#5B3A24;margin-top:-1px}
+.pasto{position:absolute;left:0;top:-38px;width:100%;height:40px;display:block}
+.raices{display:block;width:100%;transform-origin:top}.raices.ancho{height:clamp(200px,24vw,300px)}.raices.movil{display:none;height:220px}
+.tierra{background:#5B3A24!important;color:#FAF8F5}.tierra .k{color:#E3CDB7!important}.tierra h2,.tierra h3{color:#FAF8F5}.tierra p{color:#F0E6DC}.tierra a{color:#FAF8F5}
+.tierra .sv-medir ol,.tierra ol{background:#FAF8F5;color:#302D2A}
+
 .arbol-intro{max-width:52ch;color:#57524d;margin:12px 0 0}
-.arbol{position:relative;max-width:1100px;margin:56px auto 0;padding:0 20px}
+.arbol{position:relative;max-width:1100px;margin:56px auto 0;padding:0 20px 70px}
 .arbol::before{content:"";position:absolute;left:50%;top:-40px;bottom:0;width:34px;margin-left:-17px;border-radius:14px 14px 0 0;
-  background:#3B2A1F url(../../img/madera/corteza.webp) center/100% 100%;box-shadow:inset -6px 0 10px #0005,inset 4px 0 6px #ffffff14;
+  background:#5B3A24;
   transform-origin:top;animation:tronco linear both;animation-timeline:view();animation-range:entry 10% cover 55%}
 @keyframes tronco{from{transform:scaleY(.12)}to{transform:none}}
 .fila{position:relative;display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;margin-top:-34px}
@@ -225,7 +231,6 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .hoja img{width:56px;height:56px;flex:none;filter:drop-shadow(0 3px 5px #0004)}
 .hoja b{display:block;font:21px/1.15 var(--serif)}.hoja small{display:block;color:#57524d;font-size:13px}
 .hoja em{display:block;font-style:normal;font-size:13px;color:#5B3A24;margin-top:3px}
-.raices{display:block;width:100%;height:clamp(200px,26vw,340px);margin-top:-2px;transform-origin:top}
 .arbol-js .nudo{transition:transform .7s var(--ease);transform-origin:center}
 .arbol-js .fila:not(.vista) .nudo{transform:scaleX(0)}
 .arbol-js .fila:not(.vista) .hoja{opacity:0;transform:translateY(14px)}
@@ -239,7 +244,7 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
   .rama{width:100%!important;left:0!important;right:auto!important}
   .izq .rama{transform:scaleX(-1);transform-origin:center!important}
   .izq .hoja,.der .hoja{grid-column:3;justify-self:stretch;margin:0}
-  .raices{height:180px}
+  .raices.ancho{display:none}.raices.movil{display:block}
 }
 @media (prefers-reduced-motion:reduce){.arbol::before{animation:none}}
 /* ——— cabecera interior igual que la portada: el tronco grande en el lateral ——— */
@@ -249,7 +254,7 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 .tronco-int{position:absolute;right:-20vw;top:-8vw;width:min(78vw,860px);aspect-ratio:1;pointer-events:none}
 .tronco-int img{width:100%;height:100%;filter:drop-shadow(0 30px 40px #0007)}
 .sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 40%,#302D2A00 66%);pointer-events:none}
-@media (max-width:760px){.sv-hero{align-items:flex-end;min-height:auto}.tronco-int{right:-45vw;top:-12vw;width:118vw}.sv-hero .w{padding-top:70vw}}
+@media (max-width:760px){.sv-hero{align-items:flex-end;min-height:auto}.tronco-int{right:-38vw;top:-22vw;width:104vw}.sv-hero .w{padding-top:62vw}.sv-hero::after{background:linear-gradient(0deg,#302D2A 0%,#302D2A 42%,#302D2A00 72%)}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · precios orientativos a validar</div>
 <header class="cab"><div class="w">
