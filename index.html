@@ -144,8 +144,6 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
 /* testa de madera con el precio a tiza (marca de almacén) */
 .testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
 .testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
-.marca-tiza{position:absolute;left:0;right:0;top:50%;text-align:center;font:600 max(17px,calc(var(--t) * .2))/1 Caveat,cursive;color:#F7F1E8;
-  transform:translateY(-50%) rotate(-9deg);text-shadow:0 0 1px #fff9,0 1px 1px #0006;letter-spacing:.01em;pointer-events:none;white-space:nowrap}
 .barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
 .sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
 /* galería de obra real: recortes iguales, pie como etiqueta */
@@ -171,6 +169,53 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
 @media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
 .g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
 @media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
+
+/* ——— v4 · el árbol ——— */
+.arbol-sec{position:relative;background:linear-gradient(#E6E2DC 0,#E6E2DC calc(100% - 300px),var(--sig) 100%);padding:96px 0 0;overflow:clip}
+.arbol-intro{max-width:52ch;color:#57524d;margin:12px 0 0}
+.arbol{position:relative;max-width:1100px;margin:56px auto 0;padding:0 20px}
+.arbol::before{content:"";position:absolute;left:50%;top:-40px;bottom:0;width:34px;margin-left:-17px;border-radius:14px 14px 0 0;
+  background:#3B2A1F url(img/madera/corteza.webp) center/100% 100%;box-shadow:inset -6px 0 10px #0005,inset 4px 0 6px #ffffff14;
+  transform-origin:top;animation:tronco linear both;animation-timeline:view();animation-range:entry 10% cover 55%}
+@keyframes tronco{from{transform:scaleY(.12)}to{transform:none}}
+.fila{position:relative;display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;margin-top:-34px}
+.fila:first-child{margin-top:0}
+.nudo{grid-column:2;grid-row:1;height:60px;position:relative}
+.rama{position:absolute;top:0;width:calc(50% - 16px);height:60px}
+.izq .rama{right:calc(50% + 14px);transform-origin:right center}
+.der .rama{left:calc(50% + 14px);transform-origin:left center}
+.hoja{grid-row:1;display:flex;gap:14px;align-items:center;padding:14px 16px;background:#FAF8F5;border:1px solid #302d2a1f;border-radius:6px;text-decoration:none;
+  box-shadow:0 10px 24px -18px #0007;max-width:420px;transition:transform .5s var(--ease),opacity .5s var(--ease),border-color .2s,box-shadow .2s}
+.hoja:hover{border-color:#9A6A45;box-shadow:0 14px 30px -18px #0009}
+.izq .hoja{grid-column:1;justify-self:end;margin-right:-8px}.der .hoja{grid-column:3;justify-self:start;margin-left:-8px}
+.hoja img{width:56px;height:56px;flex:none;filter:drop-shadow(0 3px 5px #0004)}
+.hoja b{display:block;font:21px/1.15 var(--serif)}.hoja small{display:block;color:#57524d;font-size:13px}
+.hoja em{display:block;font-style:normal;font-size:13px;color:#5B3A24;margin-top:3px}
+.raices{display:block;width:100%;height:clamp(200px,26vw,340px);margin-top:-2px;transform-origin:top}
+.arbol-js .nudo{transition:transform .7s var(--ease);transform-origin:center}
+.arbol-js .fila:not(.vista) .nudo{transform:scaleX(0)}
+.arbol-js .fila:not(.vista) .hoja{opacity:0;transform:translateY(14px)}
+.arbol-js .fila.vista .hoja{transition-delay:.3s}
+.arbol-js .raices{transition:transform 1s var(--ease),opacity 1s var(--ease)}
+.arbol-js .raices:not(.vista){transform:scaleY(.2);opacity:0}
+@media (max-width:760px){
+  .arbol::before{left:26px;margin-left:0;width:26px}
+  .fila{grid-template-columns:30px 64px 1fr;margin-top:12px}
+  .nudo{grid-column:2}.arbol-js .nudo{transform-origin:left center}
+  .rama{width:100%!important;left:0!important;right:auto!important}
+  .izq .rama{transform:scaleX(-1);transform-origin:center!important}
+  .izq .hoja,.der .hoja{grid-column:3;justify-self:stretch;margin:0}
+  .raices{height:180px}
+}
+@media (prefers-reduced-motion:reduce){.arbol::before{animation:none}}
+/* ——— cabecera interior igual que la portada: el tronco grande en el lateral ——— */
+.sv-hero{position:relative;overflow:clip;min-height:min(72vh,620px);display:flex;align-items:center}
+.sv-hero .w{position:relative;z-index:1;grid-template-columns:1fr!important;width:100%}
+.sv-hero .w>div{max-width:640px}
+.tronco-int{position:absolute;right:-20vw;top:-8vw;width:min(78vw,860px);aspect-ratio:1;pointer-events:none}
+.tronco-int img{width:100%;height:100%;filter:drop-shadow(0 30px 40px #0007)}
+.sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 40%,#302D2A00 66%);pointer-events:none}
+@media (max-width:760px){.sv-hero{align-items:flex-end;min-height:auto}.tronco-int{right:-45vw;top:-12vw;width:118vw}.sv-hero .w{padding-top:70vw}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · web v1 · <a href="marca/">marca</a> · <a href="v1/">propuestas de logo</a> · precios orientativos a validar</div>
 <header class="cab"><div class="w">
@@ -211,7 +256,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   <div class="intro"><div><span class="k">Servicios y precios</span><h2 id="t-pila" class="aparece">Cada trabajo, con su precio a la vista.</h2></div>
   <p>Como en un almacén de maderas: cada tabla lleva en la testa qué es y cuánto vale. Son precios orientativos con IVA para Córdoba y provincia; el tuyo, con tus fotos.</p></div>
   <article class="tabla g3" id="puertas">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-puertas.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">280 €</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-puertas.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">01</span><h3><a href="puertas-de-interior/">Puertas de interior</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">Cambiar las puertas de casa: lacadas en blanco o de madera, con marco, tapajuntas y manilla.</p>
@@ -220,7 +265,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g5" id="armarios">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-armarios.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">450 €/m</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-armarios.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">02</span><h3><a href="armarios-empotrados/">Armarios empotrados</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">Armario a medida en el hueco que tengas: puertas abatibles o correderas, con el interior hecho.</p>
@@ -229,7 +274,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g5" id="cocinas">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-cocinas.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">a medida</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-cocinas.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">03</span><h3><a href="montaje-de-cocinas/">Montaje de cocinas</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">La parte de carpintería de la cocina: muebles altos y bajos, encimera, puertas y cajones ajustados, electrodomésticos en su columna.</p>
@@ -238,7 +283,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g2" id="correderas">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-correderas.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">400 €</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-correderas.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">04</span><h3><a href="puertas-correderas/">Puertas correderas</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">Ganar sitio en pasillos y baños: corredera vista con guía, o empotrada dentro del tabique.</p>
@@ -247,7 +292,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g1" id="tarima">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-tarima.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">28 €/m²</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-tarima.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">05</span><h3><a href="tarima-flotante/">Tarima flotante y rodapié</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">Suelo de lamas encima del que ya tienes, sin obra, y el rodapié a juego.</p>
@@ -256,7 +301,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g4" id="entrada">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-entrada.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">900 €</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-entrada.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">06</span><h3><a href="puertas-de-entrada/">Puertas de entrada</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">La puerta de la calle o del piso: blindada, acorazada o de madera maciza.</p>
@@ -265,7 +310,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g3" id="ventanas">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-ventanas.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">a medida</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-ventanas.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">07</span><h3><a href="ventanas-y-carpinteria-metalica/">Ventanas y carpintería metálica</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">Ventanas de aluminio o PVC, cambiar las viejas, correderas de terraza y mosquiteras.</p>
@@ -274,7 +319,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g4" id="muebles">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-muebles.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">a medida</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-muebles.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">08</span><h3><a href="muebles-a-medida/">Muebles a medida</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">Estanterías, mueble de salón, el hueco de la escalera, el banco de la entrada: lo que no se compra hecho.</p>
@@ -283,7 +328,7 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </article>
 <article class="tabla g1" id="arreglos">
-  <div class="testa-w"><img class="testa" src="img/madera/testa-arreglos.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">con fotos</span></div>
+  <div class="testa-w"><img class="testa" src="img/madera/testa-arreglos.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara">
     <div class="rotulo"><span class="n">09</span><h3><a href="arreglos-de-carpinteria/">Arreglos y ajustes</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">La puerta que roza, la que no cierra, la bisagra caída, el armario descolgado. Lo pequeño también.</p>
@@ -314,12 +359,9 @@ linear-gradient(90deg,#9a6a4510,transparent 60%)}
   </div>
 </div></section>
 
-<section class="zonas" id="zonas" aria-labelledby="t-zonas"><div class="w">
-  <span class="k">Dónde trabajamos</span>
-  <h2 id="t-zonas" class="aparece">Córdoba, barrio a barrio.</h2>
-  <div class="barrios-lista"><a href="carpintero-cordoba/ciudad-jardin/"><img src="img/madera/testa-b-ciudad-jardin.webp" alt="" width="44" height="44" loading="lazy"><span><b>Ciudad Jardín</b><small>Distrito Poniente Sur</small></span></a><a href="carpintero-cordoba/fatima/"><img src="img/madera/testa-b-fatima.webp" alt="" width="44" height="44" loading="lazy"><span><b>Fátima y Campiñuela</b><small>Distrito Levante</small></span></a><a href="carpintero-cordoba/santa-rosa-valdeolleros/"><img src="img/madera/testa-b-santa-rosa-valdeolleros.webp" alt="" width="44" height="44" loading="lazy"><span><b>Santa Rosa y Valdeolleros</b><small>Distrito Norte Sierra</small></span></a><a href="carpintero-cordoba/sector-sur/"><img src="img/madera/testa-b-sector-sur.webp" alt="" width="44" height="44" loading="lazy"><span><b>Sector Sur y Campo de la Verdad</b><small>Distrito Sur</small></span></a><a href="carpintero-cordoba/levante/"><img src="img/madera/testa-b-levante.webp" alt="" width="44" height="44" loading="lazy"><span><b>Levante, Lepanto y Viñuela</b><small>Distrito Levante</small></span></a><a href="carpintero-cordoba/poniente-vistalegre/"><img src="img/madera/testa-b-poniente-vistalegre.webp" alt="" width="44" height="44" loading="lazy"><span><b>Poniente, Vistalegre y Zoco</b><small>Distrito Poniente</small></span></a><a href="carpintero-cordoba/arroyo-del-moro-norena/"><img src="img/madera/testa-b-arroyo-del-moro-norena.webp" alt="" width="44" height="44" loading="lazy"><span><b>Arroyo del Moro, Noreña y Tablero</b><small>Distrito Noroeste</small></span></a><a href="carpintero-cordoba/el-brillante/"><img src="img/madera/testa-b-el-brillante.webp" alt="" width="44" height="44" loading="lazy"><span><b>El Brillante y la Sierra</b><small>Distrito Norte Sierra</small></span></a><a href="carpintero-cordoba/centro-historico/"><img src="img/madera/testa-b-centro-historico.webp" alt="" width="44" height="44" loading="lazy"><span><b>Centro histórico</b><small>Distrito Centro</small></span></a><a href="carpintero-cordoba/canero-fuensanta/"><img src="img/madera/testa-b-canero-fuensanta.webp" alt="" width="44" height="44" loading="lazy"><span><b>Cañero, Fuensanta y Fidiana</b><small>Distrito Sureste</small></span></a><a href="carpintero-cordoba/parque-figueroa/"><img src="img/madera/testa-b-parque-figueroa.webp" alt="" width="44" height="44" loading="lazy"><span><b>Parque Figueroa</b><small>Distrito Noroeste</small></span></a><a href="carpintero-cordoba/cercanias/"><img src="img/madera/testa-b-cercanias.webp" alt="" width="44" height="44" loading="lazy"><span><b>Cercanías</b><small>Alcolea, Villarrubia, El Higuerón, Santa Cruz…</small></span></a></div>
-  <p class="nota">¿Estás en un pueblo de alrededor? Pregunta igual: <a href="carpintero-cordoba/">te decimos si llegamos</a>.</p>
-</div></section>
+<section class="arbol-sec" id="zonas" aria-labelledby="t-arbol" style="--sig:#302D2A"><div class="w"><span class="k">Dónde trabajamos</span><h2 id="t-arbol">Córdoba, barrio a barrio.</h2><p class="arbol-intro">Un tronco y muchas ramas: cada barrio tiene su carpintería. Baja y encuentra el tuyo.</p></div><div class="arbol"><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr0" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 21.0 C150 22.0 90 28.0 6 24.0 C2 24.0 0 26.0 0 27.0 C0 28.0 2 29.0 6 29.0 C90 35.0 150 44.0 200 43.0 Z" fill="url(#gr0)"/><path d="M118 39.0 C104 31.0 94 21.0 84 15.0 C88 22.0 98 33.0 110 42.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/ciudad-jardin/"><img src="img/madera/testa-b-ciudad-jardin.webp" alt="" width="64" height="64" loading="lazy"><span><b>Ciudad Jardín</b><small>Distrito Poniente Sur</small><em>Puertas de interior · Tarima flotante y rodapié</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr1" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 17.5 C150 18.5 90 23.0 6 19.0 C2 19.0 0 21.0 0 22.0 C0 23.0 2 24.0 6 24.0 C90 30.0 150 47.5 200 46.5 Z" fill="url(#gr1)"/><path d="M110 34.0 C104 26.0 94 16.0 84 10.0 C88 17.0 98 28.0 110 37.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/fatima/"><img src="img/madera/testa-b-fatima.webp" alt="" width="64" height="64" loading="lazy"><span><b>Fátima y Campiñuela</b><small>Distrito Levante</small><em>Puertas de interior · Armarios empotrados</em></span></a></div><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr2" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 18.0 C150 19.0 90 18.0 6 14.0 C2 14.0 0 16.0 0 17.0 C0 18.0 2 19.0 6 19.0 C90 25.0 150 47.0 200 46.0 Z" fill="url(#gr2)"/><path d="M102 29.0 C104 21.0 94 11.0 84 5.0 C88 12.0 98 23.0 110 32.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/santa-rosa-valdeolleros/"><img src="img/madera/testa-b-santa-rosa-valdeolleros.webp" alt="" width="64" height="64" loading="lazy"><span><b>Santa Rosa y Valdeolleros</b><small>Distrito Norte Sierra</small><em>Montaje de cocinas · Puertas correderas</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr3" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 18.5 C150 19.5 90 27.0 6 23.0 C2 23.0 0 25.0 0 26.0 C0 27.0 2 28.0 6 28.0 C90 34.0 150 46.5 200 45.5 Z" fill="url(#gr3)"/><path d="M118 38.0 C104 30.0 94 20.0 84 14.0 C88 21.0 98 32.0 110 41.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/sector-sur/"><img src="img/madera/testa-b-sector-sur.webp" alt="" width="64" height="64" loading="lazy"><span><b>Sector Sur y Campo de la Verdad</b><small>Distrito Sur</small><em>Puertas correderas · Arreglos y ajustes</em></span></a></div><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr4" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 19.0 C150 20.0 90 22.0 6 18.0 C2 18.0 0 20.0 0 21.0 C0 22.0 2 23.0 6 23.0 C90 29.0 150 46.0 200 45.0 Z" fill="url(#gr4)"/><path d="M110 33.0 C104 25.0 94 15.0 84 9.0 C88 16.0 98 27.0 110 36.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/levante/"><img src="img/madera/testa-b-levante.webp" alt="" width="64" height="64" loading="lazy"><span><b>Levante, Lepanto y Viñuela</b><small>Distrito Levante</small><em>Montaje de cocinas · Puertas de interior</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr5" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 19.5 C150 20.5 90 17.0 6 13.0 C2 13.0 0 15.0 0 16.0 C0 17.0 2 18.0 6 18.0 C90 24.0 150 45.5 200 44.5 Z" fill="url(#gr5)"/><path d="M102 28.0 C104 20.0 94 10.0 84 4.0 C88 11.0 98 22.0 110 31.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/poniente-vistalegre/"><img src="img/madera/testa-b-poniente-vistalegre.webp" alt="" width="64" height="64" loading="lazy"><span><b>Poniente, Vistalegre y Zoco</b><small>Distrito Poniente</small><em>Armarios empotrados · Puertas correderas</em></span></a></div><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr6" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 20.0 C150 21.0 90 26.0 6 22.0 C2 22.0 0 24.0 0 25.0 C0 26.0 2 27.0 6 27.0 C90 33.0 150 45.0 200 44.0 Z" fill="url(#gr6)"/><path d="M118 37.0 C104 29.0 94 19.0 84 13.0 C88 20.0 98 31.0 110 40.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/arroyo-del-moro-norena/"><img src="img/madera/testa-b-arroyo-del-moro-norena.webp" alt="" width="64" height="64" loading="lazy"><span><b>Arroyo del Moro, Noreña y Tablero</b><small>Distrito Noroeste</small><em>Tarima flotante y rodapié · Montaje de cocinas</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr7" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 20.5 C150 21.5 90 21.0 6 17.0 C2 17.0 0 19.0 0 20.0 C0 21.0 2 22.0 6 22.0 C90 28.0 150 44.5 200 43.5 Z" fill="url(#gr7)"/><path d="M110 32.0 C104 24.0 94 14.0 84 8.0 C88 15.0 98 26.0 110 35.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/el-brillante/"><img src="img/madera/testa-b-el-brillante.webp" alt="" width="64" height="64" loading="lazy"><span><b>El Brillante y la Sierra</b><small>Distrito Norte Sierra</small><em>Puertas de entrada · Ventanas y carpintería metálica</em></span></a></div><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr8" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 21.0 C150 22.0 90 16.0 6 12.0 C2 12.0 0 14.0 0 15.0 C0 16.0 2 17.0 6 17.0 C90 23.0 150 44.0 200 43.0 Z" fill="url(#gr8)"/><path d="M102 27.0 C104 19.0 94 9.0 84 3.0 C88 10.0 98 21.0 110 30.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/centro-historico/"><img src="img/madera/testa-b-centro-historico.webp" alt="" width="64" height="64" loading="lazy"><span><b>Centro histórico</b><small>Distrito Centro</small><em>Puertas de entrada · Ventanas y carpintería metálica</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr9" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 17.5 C150 18.5 90 25.0 6 21.0 C2 21.0 0 23.0 0 24.0 C0 25.0 2 26.0 6 26.0 C90 32.0 150 47.5 200 46.5 Z" fill="url(#gr9)"/><path d="M118 36.0 C104 28.0 94 18.0 84 12.0 C88 19.0 98 30.0 110 39.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/canero-fuensanta/"><img src="img/madera/testa-b-canero-fuensanta.webp" alt="" width="64" height="64" loading="lazy"><span><b>Cañero, Fuensanta y Fidiana</b><small>Distrito Sureste</small><em>Puertas de entrada · Ventanas y carpintería metálica</em></span></a></div><div class="fila izq"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr10" x1="1" x2="0"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g><path d="M200 18.0 C150 19.0 90 20.0 6 16.0 C2 16.0 0 18.0 0 19.0 C0 20.0 2 21.0 6 21.0 C90 27.0 150 47.0 200 46.0 Z" fill="url(#gr10)"/><path d="M110 31.0 C104 23.0 94 13.0 84 7.0 C88 14.0 98 25.0 110 34.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/parque-figueroa/"><img src="img/madera/testa-b-parque-figueroa.webp" alt="" width="64" height="64" loading="lazy"><span><b>Parque Figueroa</b><small>Distrito Noroeste</small><em>Puertas de interior · Armarios empotrados</em></span></a></div><div class="fila der"><div class="nudo"><svg class="rama" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="gr11" x1="0" x2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset="1" stop-color="#6A4B35"/></linearGradient></defs><g transform="translate(200 0) scale(-1 1)"><path d="M200 18.5 C150 19.5 90 15.0 6 11.0 C2 11.0 0 13.0 0 14.0 C0 15.0 2 16.0 6 16.0 C90 22.0 150 46.5 200 45.5 Z" fill="url(#gr11)"/><path d="M102 26.0 C104 18.0 94 8.0 84 2.0 C88 9.0 98 20.0 110 29.0 Z" fill="#4A3526"/></g></svg></div><a class="hoja" href="carpintero-cordoba/cercanias/"><img src="img/madera/testa-b-cercanias.webp" alt="" width="64" height="64" loading="lazy"><span><b>Cercanías de Córdoba</b><small>Alcolea, Villarrubia, El Higuerón, Santa Cruz…</small><em>Puertas de entrada · Ventanas y carpintería metálica</em></span></a></div></div><svg class="raices" viewBox="0 0 1200 360" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><defs><linearGradient id="raiz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B2A1F"/><stop offset=".55" stop-color="#3B2A1F" stop-opacity=".75"/><stop offset="1" stop-color="#302D2A" stop-opacity="0"/></linearGradient></defs><rect x="583" y="0" width="34" height="40" fill="#3B2A1F"/><path d="M600 0 C444 40 210 90 80 170 L74 172 C184 94 420 40 578 0 Z" fill="url(#raiz)"/><path d="M600 0 C756 46 990 102 1120 188 L1126 190 C1016 106 780 46 622 0 Z" fill="url(#raiz)"/><path d="M600 0 C486 52 315 114 220 206 L214 208 C294 118 464 52 578 0 Z" fill="url(#raiz)"/><path d="M600 0 C714 58 885 126 980 224 L986 226 C906 130 736 58 622 0 Z" fill="url(#raiz)"/><path d="M600 0 C528 64 420 138 360 242 L354 244 C403 142 509 64 578 0 Z" fill="url(#raiz)"/><path d="M600 0 C672 70 780 150 840 260 L846 262 C797 154 691 70 622 0 Z" fill="url(#raiz)"/><path d="M600 0 C567 76 518 162 490 278 L484 280 C504 166 551 76 578 0 Z" fill="url(#raiz)"/><path d="M600 0 C633 82 682 174 710 296 L716 298 C696 178 649 82 622 0 Z" fill="url(#raiz)"/><path d="M600 0 C591 88 578 186 570 314 L564 316 C567 190 576 88 578 0 Z" fill="url(#raiz)"/><path d="M600 0 C609 94 622 198 630 332 L636 334 C633 202 624 94 622 0 Z" fill="url(#raiz)"/></svg></section><script>(()=>{const r=document.documentElement;if(matchMedia('(prefers-reduced-motion:reduce)').matches||!('IntersectionObserver' in window))return;r.classList.add('arbol-js');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vista');io.unobserve(e.target)}}),{rootMargin:'0px 0px -12% 0px'});
+document.querySelectorAll('.arbol .fila,.raices').forEach(el=>io.observe(el));})();</script>
 
 <section class="pide" id="pide" aria-labelledby="t-pide">
   <img class="sil" src="img/yeadel-simbolo-mono-cal.svg" alt="" width="620" height="620" loading="lazy">

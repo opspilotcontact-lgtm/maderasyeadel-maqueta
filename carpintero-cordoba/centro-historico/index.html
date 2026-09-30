@@ -176,8 +176,6 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 /* testa de madera con el precio a tiza (marca de almacén) */
 .testa-w{position:relative;flex:none;align-self:start;margin:22px 26px 22px 0;width:var(--t);height:var(--t)}
 .testa-w .testa{margin:0;width:100%;height:100%;filter:drop-shadow(0 6px 10px #0000003d)}
-.marca-tiza{position:absolute;left:0;right:0;top:50%;text-align:center;font:600 max(17px,calc(var(--t) * .2))/1 Caveat,cursive;color:#F7F1E8;
-  transform:translateY(-50%) rotate(-9deg);text-shadow:0 0 1px #fff9,0 1px 1px #0006;letter-spacing:.01em;pointer-events:none;white-space:nowrap}
 .barrios-lista img,.otros img{border-radius:50%;filter:drop-shadow(0 2px 4px #0003)}
 .sv-hero .testa-g{filter:drop-shadow(0 26px 34px #0008)}
 /* galería de obra real: recortes iguales, pie como etiqueta */
@@ -203,6 +201,53 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
 @media (prefers-reduced-motion:reduce){.tronco .madera{opacity:1}.tronco svg{display:none}}
 .g1{--t:84px}.g2{--t:94px}.g3{--t:104px}.g4{--t:116px}.g5{--t:128px}
 @media (max-width:520px){.g1,.g2,.g3,.g4,.g5{--t:76px}.tronco{right:-45vw!important}}
+
+/* ——— v4 · el árbol ——— */
+.arbol-sec{position:relative;background:linear-gradient(#E6E2DC 0,#E6E2DC calc(100% - 300px),var(--sig) 100%);padding:96px 0 0;overflow:clip}
+.arbol-intro{max-width:52ch;color:#57524d;margin:12px 0 0}
+.arbol{position:relative;max-width:1100px;margin:56px auto 0;padding:0 20px}
+.arbol::before{content:"";position:absolute;left:50%;top:-40px;bottom:0;width:34px;margin-left:-17px;border-radius:14px 14px 0 0;
+  background:#3B2A1F url(../../img/madera/corteza.webp) center/100% 100%;box-shadow:inset -6px 0 10px #0005,inset 4px 0 6px #ffffff14;
+  transform-origin:top;animation:tronco linear both;animation-timeline:view();animation-range:entry 10% cover 55%}
+@keyframes tronco{from{transform:scaleY(.12)}to{transform:none}}
+.fila{position:relative;display:grid;grid-template-columns:1fr 240px 1fr;align-items:center;margin-top:-34px}
+.fila:first-child{margin-top:0}
+.nudo{grid-column:2;grid-row:1;height:60px;position:relative}
+.rama{position:absolute;top:0;width:calc(50% - 16px);height:60px}
+.izq .rama{right:calc(50% + 14px);transform-origin:right center}
+.der .rama{left:calc(50% + 14px);transform-origin:left center}
+.hoja{grid-row:1;display:flex;gap:14px;align-items:center;padding:14px 16px;background:#FAF8F5;border:1px solid #302d2a1f;border-radius:6px;text-decoration:none;
+  box-shadow:0 10px 24px -18px #0007;max-width:420px;transition:transform .5s var(--ease),opacity .5s var(--ease),border-color .2s,box-shadow .2s}
+.hoja:hover{border-color:#9A6A45;box-shadow:0 14px 30px -18px #0009}
+.izq .hoja{grid-column:1;justify-self:end;margin-right:-8px}.der .hoja{grid-column:3;justify-self:start;margin-left:-8px}
+.hoja img{width:56px;height:56px;flex:none;filter:drop-shadow(0 3px 5px #0004)}
+.hoja b{display:block;font:21px/1.15 var(--serif)}.hoja small{display:block;color:#57524d;font-size:13px}
+.hoja em{display:block;font-style:normal;font-size:13px;color:#5B3A24;margin-top:3px}
+.raices{display:block;width:100%;height:clamp(200px,26vw,340px);margin-top:-2px;transform-origin:top}
+.arbol-js .nudo{transition:transform .7s var(--ease);transform-origin:center}
+.arbol-js .fila:not(.vista) .nudo{transform:scaleX(0)}
+.arbol-js .fila:not(.vista) .hoja{opacity:0;transform:translateY(14px)}
+.arbol-js .fila.vista .hoja{transition-delay:.3s}
+.arbol-js .raices{transition:transform 1s var(--ease),opacity 1s var(--ease)}
+.arbol-js .raices:not(.vista){transform:scaleY(.2);opacity:0}
+@media (max-width:760px){
+  .arbol::before{left:26px;margin-left:0;width:26px}
+  .fila{grid-template-columns:30px 64px 1fr;margin-top:12px}
+  .nudo{grid-column:2}.arbol-js .nudo{transform-origin:left center}
+  .rama{width:100%!important;left:0!important;right:auto!important}
+  .izq .rama{transform:scaleX(-1);transform-origin:center!important}
+  .izq .hoja,.der .hoja{grid-column:3;justify-self:stretch;margin:0}
+  .raices{height:180px}
+}
+@media (prefers-reduced-motion:reduce){.arbol::before{animation:none}}
+/* ——— cabecera interior igual que la portada: el tronco grande en el lateral ——— */
+.sv-hero{position:relative;overflow:clip;min-height:min(72vh,620px);display:flex;align-items:center}
+.sv-hero .w{position:relative;z-index:1;grid-template-columns:1fr!important;width:100%}
+.sv-hero .w>div{max-width:640px}
+.tronco-int{position:absolute;right:-20vw;top:-8vw;width:min(78vw,860px);aspect-ratio:1;pointer-events:none}
+.tronco-int img{width:100%;height:100%;filter:drop-shadow(0 30px 40px #0007)}
+.sv-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#302D2A 0%,#302D2Ae6 40%,#302D2A00 66%);pointer-events:none}
+@media (max-width:760px){.sv-hero{align-items:flex-end;min-height:auto}.tronco-int{right:-45vw;top:-12vw;width:118vw}.sv-hero .w{padding-top:70vw}}
 </style></head><body>
 <div class="franja">Propuesta en revisión · precios orientativos a validar</div>
 <header class="cab"><div class="w">
@@ -213,22 +258,22 @@ background:repeating-linear-gradient(90deg,var(--g) 0 1px,transparent 1px 12px) 
   <div><p class="miga"><a href="../../">Inicio</a> · <a href="../../carpintero-cordoba/">Barrios</a></p>
     <h1>Carpintero en Centro histórico</h1><p class="sub">Casas de patio de dos y tres plantas en la Judería, San Basilio, Santa Marina, San Andrés y San Lorenzo.</p>
     <a class="btn" href="../../?b=centro-historico#pide">Pide tu precio</a><p class="miga" style="margin-top:14px">Distrito Centro</p></div>
-  <img class="testa-g" src="../../img/madera/testa-b-centro-historico.webp" alt="" width="380" height="380">
+  <div class="tronco-int" aria-hidden="true"><img src="../../img/madera/testa-hero.webp" alt="" width="1000" height="1000" fetchpriority="high"></div>
 </div></section>
 <div class="canto" aria-hidden="true"></div>
 <section class="pila"><div class="w">
   <div class="intro"><div><span class="k">En Centro histórico</span><h2>Lo que más se pide aquí.</h2></div>
   <p>En el centro histórico la carpintería es parte de la casa: portones, puertas de madera maciza y ventanas que dan al patio o a la calle. Antes de cambiar nada de lo que da a la calle hay que mirar qué se puede hacer en ese edificio.</p></div>
   <article class="tabla g4">
-  <div class="testa-w"><img class="testa" src="../../img/madera/testa-entrada.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">900 €</span></div>
+  <div class="testa-w"><img class="testa" src="../../img/madera/testa-entrada.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara"><div class="rotulo"><h3><a href="../../puertas-de-entrada/">Puertas de entrada</a></h3><span class="tipo montaje">Montaje · sin visita previa</span></div>
     <p class="que">Una puerta de calle de madera maciza, hecha a la medida del hueco antiguo, que casi nunca es estándar.</p><div class="pie-tabla"><p class="tiza"><b>desde 900 €</b> <span>la puerta, instalada</span></p><p class="plazo">1 día</p></div></div>
 </article><article class="tabla g3">
-  <div class="testa-w"><img class="testa" src="../../img/madera/testa-ventanas.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">a medida</span></div>
+  <div class="testa-w"><img class="testa" src="../../img/madera/testa-ventanas.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara"><div class="rotulo"><h3><a href="../../ventanas-y-carpinteria-metalica/">Ventanas y carpintería metálica</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">Si la ventana da a la calle, antes de encargarla se comprueba qué permite el ayuntamiento en ese edificio. Te lo decimos antes de empezar.</p><div class="pie-tabla"><p class="tiza"><b>Precio con tus fotos</b></p><p class="plazo">Te damos el plazo con el precio</p></div></div>
 </article><article class="tabla g4">
-  <div class="testa-w"><img class="testa" src="../../img/madera/testa-muebles.webp" alt="" width="120" height="120" loading="lazy"><span class="marca-tiza" aria-hidden="true">a medida</span></div>
+  <div class="testa-w"><img class="testa" src="../../img/madera/testa-muebles.webp" alt="" width="120" height="120" loading="lazy"></div>
   <div class="cara"><div class="rotulo"><h3><a href="../../muebles-a-medida/">Muebles a medida</a></h3><span class="tipo medida">A medida · se mide antes</span></div>
     <p class="que">Muebles a medida para huecos irregulares: hornacinas, escaleras, muros que no están rectos.</p><div class="pie-tabla"><p class="tiza"><b>Precio con tus fotos</b></p><p class="plazo">Depende de la pieza</p></div></div>
 </article>
